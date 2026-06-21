@@ -1,3 +1,17 @@
+/**
+ * @file        lru_cache.hpp
+ * @brief       Reference/example implementation of LRU block caching
+ *
+ * @author      Vasu (Srinivas Guttina)
+ * @date        2026-02-28
+ * @version     0.1
+ *
+ * @copyright   Copyright (c) 2026 Srinivas Guttina.
+ *  
+ * @license     GNU AGPL with exceptions. See LICENSE.md for further details
+ *              and exceptions
+ */
+
 #ifndef __LRU_CACHE_HPP__
 #define __LRU_CACHE_HPP__
 #include <memory>
@@ -22,6 +36,7 @@ using Timestamp_t = uint64_t;
 using CacheKey_t = uint64_t;
 using BufPtr_t = std::shared_ptr<const uint8_t[]>;
 
+
 struct CacheNode_t {
     CacheKey_t Key;
     Timestamp_t aTime;
@@ -31,7 +46,6 @@ struct CacheNode_t {
 };
 
 
-/* TODO Preallocate cache nodes for the cache capacity, and track them */
 class LRU_FileCache {
 private:
     size_t Capacity;

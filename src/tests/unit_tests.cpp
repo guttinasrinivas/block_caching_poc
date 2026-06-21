@@ -1,3 +1,17 @@
+/**
+ * @file        unit_tests.cpp
+ * @brief       Reference/example implementation of LRU block caching, unit tests
+ *
+ * @author      Vasu (Srinivas Guttina)
+ * @date        2026-02-28
+ * @version     0.1
+ *
+ * @copyright   Copyright (c) 2026 Srinivas Guttina.
+ *  
+ * @license     GNU AGPL with exceptions. See LICENSE.md for further details
+ *              and exceptions
+ */
+
 #include <iostream>
 #include <vector>
 #include <cassert>
