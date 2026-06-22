@@ -42,9 +42,14 @@ Another alternative is to use the LBA of the block. This, however, requires the 
 It is possible to directly read the FBN by opening, parsing and traversing the inode(s). The additional complexity is worth at scale. But this is skipped for now in favour of Deriving the FBN.  
 
 ## Deriving the FBN
-The figurate analog of the FBN can be calculated from the file offset using simple math: (offset / FILE_BLOCK_SIZE). Typically, it is 4KB. Note that the FILE_BLOCK_SIZE may be fine-tuned dependent on quite a few factors such as the Filesystem, OS/Kernel version, block storage layers below etc. While the choices for personal computing equipment typically ranges from 1KB to 4KB, the large file blocks are not that common. For large file servers, it could be fine-tuned to larger blocks, for example, to 1+MB. The merits and compromises of file block sizes are beyond the scope of this document.  
+The figurate analog of the FBN can be calculated from the file offset using simple math: `(offset / FILE_BLOCK_SIZE)`. Typically, it is `4KB`. Note that the `FILE_BLOCK_SIZE` may be fine-tuned dependent on quite a few factors such as the Filesystem, OS/Kernel version, block storage layers below etc. While the choices for personal computing equipment typically ranges from `1KB` to `4KB`, the larger file blocks are not that common. For large file servers, it could be fine-tuned to larger blocks, for example, to `1+MB`. The merits and compromises of file block sizes are beyond the scope of this document.  
 
-If uniformity is the goal, the FILE_BLOCK_SIZE could be specified manually. However, this adds little benefits even in the systems where multiple filesystems provide multiple block sizes.  
+If uniformity is the goal, the `FILE_BLOCK_SIZE` could be specified manually. However, this adds little benefits even in the systems where multiple filesystems provide multiple block sizes.
+
+Having said that, the `FILE_BLOCK_SIZE` must match the real block length being tracked by the cache.
+
+## Block Fetch and Free
+Left outside the scope of current implmentations. Flushing a block from cache does not automatically free it, at least for now.
 
 ## Other ways of Tagging
 Application may provide it's own way tagging the cached blocks. This, for example, could use UUID generators, internal references etc. Since this is specific to the targeted application, and involves understanding the internals of the target application, this is kept aside for now.  
